@@ -15,43 +15,49 @@
             <groupId>com.laiwang.lippi</groupId>
             <artifactId>lippi.oapi.encryt</artifactId>
             <version>1.0.3-SNAPSHOT</version>
+            <scope>system</scope>
             <systemPath>${project.basedir}/lib/lippi-oapi-encrpt.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.api</artifactId>
             <version>1.0.2</version>
+            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.api-1.0.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.common-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.core-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.spring</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.spring-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>taobao-sdk-java</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <systemPath>${project.basedir}/lib/taobao-sdk-java-auto_1479188381469-20170724.jar
-            </systemPath>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/taobao-sdk-java-auto_1479188381469-20170724.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
+            <scope>system</scope>
             <systemPath>${project.basedir}/lib/commons-io-2.4.jar</systemPath>
         </dependency>
         <dependency>
