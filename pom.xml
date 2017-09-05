@@ -232,7 +232,6 @@
                         <resource>
                             <directory>lib</directory>
                             <targetPath>WEB-INF/lib</targetPath>
-                            <filtering>true</filtering>
                             <includes>
                                 <include>**/*.jar</include>
                             </includes>
