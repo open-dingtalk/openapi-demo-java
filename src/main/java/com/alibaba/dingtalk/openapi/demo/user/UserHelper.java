@@ -126,9 +126,15 @@ public class UserHelper {
     }
 
 
-
+    /**
+     * 管理后台免登时通过CODE换取微应用管理员的身份信息
+     *
+     * @param ssoToken
+     * @param code
+     * @return
+     * @throws OApiException
+     */
     public static JSONObject getAgentUserInfo(String ssoToken, String code) throws OApiException {
-
         String url = Env.OAPI_HOST + "/sso/getuserinfo?" + "access_token=" + ssoToken + "&code=" + code;
         JSONObject response = HttpHelper.httpGet(url);
         return response;

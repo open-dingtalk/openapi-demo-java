@@ -19,7 +19,6 @@ import com.alibaba.fastjson.JSONObject;
 public class OAoauth extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		
 		String code = request.getParameter("code");
 		if(code != null){
 			try {
@@ -31,6 +30,7 @@ public class OAoauth extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else{
+		    // 免登成功后会跳转到redirect_url
 			String reurl = "https://oa.dingtalk.com/omp/api/micro_app/admin/landing?corpid=" + 
 			Env.CORP_ID + "&redirect_url=" + Env.OA_BACKGROUND_URL;//配置的OA后台地址
 			response.addHeader("location", reurl);

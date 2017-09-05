@@ -26,7 +26,9 @@ import com.alibaba.dingtalk.openapi.demo.OApiException;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-
+/**
+ * HTTP请求封装，建议直接使用sdk的API
+ */
 public class HttpHelper {
 
 	public static JSONObject httpGet(String url) throws OApiException{
@@ -52,8 +54,6 @@ public class HttpHelper {
 
                 JSONObject result = JSON.parseObject(resultStr);
                 if (result.getInteger("errcode") == 0) {
-//                	result.remove("errcode");
-//                	result.remove("errmsg");
                     return result;
                 } else {
                     System.out.println("request url=" + url + ",return value=");

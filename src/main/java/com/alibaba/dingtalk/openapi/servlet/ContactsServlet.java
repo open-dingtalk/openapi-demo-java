@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 查询企业通讯录数据
+ * 查询企业通讯录下的用户列表
  */
 public class ContactsServlet extends HttpServlet {
 
@@ -62,7 +62,6 @@ public class ContactsServlet extends HttpServlet {
                         break;
                     }
                 }
-
 
                 if (corpUserList.getUserlist().size() == 0) {
                     continue;

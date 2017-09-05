@@ -1,11 +1,13 @@
 package com.alibaba.dingtalk.openapi.demo;
 
 
-
+/**
+ * 企业应用接入时的常量定义
+ */
 public class Env {
 
     /**
-     * 企业应用秘钥
+     * 企业应用接入秘钥相关
      */
     public static final String CORP_ID = "";
     public static final String CORP_SECRET = "";

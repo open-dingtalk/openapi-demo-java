@@ -1,14 +1,14 @@
 package com.alibaba.dingtalk.openapi.demo.utils.aes;
 
-import java.security.MessageDigest;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
  * 加解密工具类
  */
 public class Utils {
+    
     /**
+     * 获取随机字符串
      *
      * @return
      */
@@ -38,6 +38,7 @@ public class Utils {
 
     /**
      * 高位在前bytes数组转int
+     *
      * @param byteArr
      * @return
      */

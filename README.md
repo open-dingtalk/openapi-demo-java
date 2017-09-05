@@ -4,7 +4,7 @@
 ## Getting Started
 
 1. 将工程clone到本地：`git clone https://github.com/ddtalk/HarleyCorp.git`
-2. 使用IDE导入工程，比如eclipse点击`File->import`(推荐使用maven导入), IDEA点击`File->New->Project from Existing Sources...`
+2. 使用IDE导入工程，比如eclipse点击`File->import`(推荐使用maven导入), IDEA点击`File->New->Project from Existing Sources...`, 文件编码都是UTF-8
 3. 打开工程的Env.java文件，填入企业的CORP_ID和SECRET（CORP_ID和SECRET可以在企业OA后台找到）
 ```
 

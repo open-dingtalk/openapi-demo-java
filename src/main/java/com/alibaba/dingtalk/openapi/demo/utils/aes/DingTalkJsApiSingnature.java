@@ -47,10 +47,6 @@ public class DingTalkJsApiSingnature {
 
 
     public static void main(String args[]) throws Exception{
-
-
-
-                // signature:810e6657e9f411e6491b3e97dfaf7660e89eb874,serverSign:0e781e79966d6f27e2b6456b83d5cee0ebaeb81b
         String url="http://10.62.53.138:3000/jsapi";
         String nonce="abcdefgh";
         Long timeStamp = 1437027269927L;

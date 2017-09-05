@@ -207,9 +207,4 @@ public class DingTalkEncryptor {
         }
     }
 
-
-
-
-
-
 }

@@ -11,9 +11,14 @@ import java.util.List;
 
 /**
  * 部门相关API
+ *
+ * https://open-doc.dingtalk.com/docs/doc.htm?treeId=371&articleId=106817&docType=1
  */
 public class DepartmentHelper {
 
+    /**
+     *  创建部门
+     */
     public static String createDepartment(String accessToken, String name,
                                           String parentId, String order, boolean createDeptGroup) throws Exception {
 
@@ -21,7 +26,9 @@ public class DepartmentHelper {
         return corpDepartmentService.deptCreate(accessToken, name, parentId, order, createDeptGroup);
     }
 
-
+    /**
+     * 获取部门列表
+     */
     public static List<Department> listDepartments(String accessToken, String parentDeptId)
             throws ServiceNotExistException, SdkInitException, ServiceException {
         CorpDepartmentService corpDepartmentService = ServiceFactory.getInstance().getOpenService(CorpDepartmentService.class);
@@ -30,12 +37,17 @@ public class DepartmentHelper {
     }
 
 
+    /**
+     * 删除部门
+     */
     public static void deleteDepartment(String accessToken, Long id) throws Exception {
         CorpDepartmentService corpDepartmentService = ServiceFactory.getInstance().getOpenService(CorpDepartmentService.class);
         corpDepartmentService.deptDelete(accessToken, id);
     }
 
-
+    /**
+     * 更新部门
+     */
     public static void updateDepartment(String accessToken, long id, String name,
                                         String parentId, String order, Boolean createDeptGroup,
                                         boolean autoAddUser, String deptManagerUseridList, boolean deptHiding, String deptPerimits,
