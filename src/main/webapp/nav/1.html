@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<html>
+	<title>Nav 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="../stylesheets/style.css">
+    <style>
+        body {
+            background-color: burlywood;
+        }
+    </style>
+	<script type="text/javascript" src="javascripts/base.js"></script>
+	<script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.7.3/scripts/dingtalk.js">
+	</script>
+	<script type="text/javascript">
+
+	dd.config({
+        /**
+         * 配置参数
+         */
+    });
+
+    dd.ready(init);
+
+    function init() {
+        log.i('runtimeready');
+
+        document.addEventListener('pause', function() {
+            log.i('1 pause');
+        });
+
+        document.addEventListener('resume', function() {
+            log.i('1 resume');
+
+            dd.runtime.message.fetch({
+                onSuccess: function(data) {
+                    log.i('fetch message success: ' + JSON.stringify(data));
+                },
+                onFail: function(err) {
+                    log.e('fetch message err: ' + JSON.stringify(err));
+                }
+            });
+        });
+
+        document.addEventListener('pullToRefresh', function(ev) {
+            log.i('pullToRefresh');
+        });
+
+        dd.ui.nav.getCurrentId({
+            onSuccess: function(data) {
+                log.i('current nav id: ' + JSON.stringify(data));
+            },
+            onFail: function(err) {
+                log.e(JSON.stringify(err));
+            }
+        });
+
+        dd.ui.pullToRefresh.enable();
+
+        dd.biz.navigation.setTitle({
+            title: 'runtime1',
+            onSuccess: function(data) {
+                log.i('set title 1');
+            },
+            onFail: function(err) {
+                log.e(JSON.stringify(err));
+            }
+        });
+
+    	dd.biz.navigation.setMenu({
+    		backgroundColor : "#ADD8E6",
+    		items : [
+    			{
+    				id:"此处可以设置帮助",//字符串
+    			// "iconId":"file",//字符串，图标命名
+    			  text:"帮助"
+    			}
+    			,
+    			{
+    				"id":"2",
+    			"iconId":"photo",
+    			  "text":"我们"
+    			}
+    			,
+    			{
+    				"id":"3",
+    			"iconId":"file",
+    			  "text":"你们"
+    			}
+    			,
+    			{
+    				"id":"4",
+    			"iconId":"time",
+    			  "text":"他们"
+    			}
+    		],
+    		onSuccess: function(data) {
+    			alert(JSON.stringify(data));
+    		},
+    		onFail: function(err) {
+    			alert(JSON.stringify(err));
+    		}
+    	});
+        // dd.biz.navigation.setRight({
+        //     show: true,
+        //     control: true,
+        //     showIcon: false,
+        //     text: '1',
+        //     onSuccess : function(result) {
+        //         log.i('set right 1');
+        //     },
+        //     onFail : function(err) {
+        //         log.e(JSON.stringify(err));
+        //     }
+        // });
+    }
+
+	function preload() {
+		dd.ui.nav.preload({
+			pages: [
+				{
+					id: '2',
+					url: '2.html'
+				},
+				{
+					id: '3',
+					url: '3.html'
+				}
+			],
+			onSuccess: function(data) {
+                log.i('preload: ' + JSON.stringify(data));
+
+                if (data && data.status === 1) {
+                    postMessage(data.id);
+                }
+			},
+			onFail: function(err) {
+                log.e('preload err: ' + JSON.stringify(err));
+			}
+		});
+	}
+
+    function postMessage(id) {
+        dd.runtime.message.post({
+            to: [id],
+            content: {a: 123, b: 'xxxxx'},
+            onSuccess: function(data) {
+                log.i('post message to ' + id + ' success');
+            },
+            onFail: function(err) {
+                log.e('post message err: ' + JSON.stringify(err));
+            }
+        });
+    }
+
+	function go1(id,anim) {
+		dd.ui.nav.go({
+			id: id,
+            anim: anim,
+			onSuccess: function(data) {
+                log.i('go to ' + JSON.stringify(data));
+			},
+			onFail: function(err) {
+                log.e('go err: ' + JSON.stringify(err));
+			}
+		});
+	}
+
+    function go2() {
+        dd.ui.nav.go({
+            id: '4',
+            url: '3.html',
+            createIfNeeded: true,
+            onSuccess: function(data) {
+                log.i('go to ' + JSON.stringify(data));
+            },
+            onFail: function(err) {
+                log.e('go err: ' + JSON.stringify(err));
+            }
+        });
+    }
+
+    function back() {
+        dd.biz.navigation.back({
+            onSuccess: function() {
+                log.i('1 goback');
+            },
+            onFail: function(err) {
+                log.e('back err: ' + JSON.stringify(err));
+            }
+        });
+    }
+
+	</script>
+</head>
+<body>
+	<h2>Nav 1</h2>
+	<div><button onclick="preload()">Preload</button></div>
+    <div><button onclick="back()">Back</button></div>
+	<div><button onclick="go1('2',1)">Go to '2'</button></div>
+	<div><button  id = 'goto3'>Go to '3'</button></div>
+    <div><button onclick="go2()">Go2 to '4'</button></div>    
+    <div class="clear-float"/>
+    <div id="log"></div>
+</body>
+	<script type="text/javascript">
+	document.getElementById('goto3').addEventListener('click', funcition(){
+		alert("hahha");
+		go1('3',2);
+	},false);
+	</script>
+</html>

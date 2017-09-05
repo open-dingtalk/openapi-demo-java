@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>hahahaha</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <style>
+        body {
+            background-color: burlywood;
+        }
+    </style>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.7.3/scripts/dingtalk.js"></script>
+    <script type="text/javascript" src="js/support.js"></script>
+    <script type="text/javascript">
+
+        dd.ready(function() {
+            dd.support.nav.init({
+                id: 'drawer',
+                onInvoke: function(data) {
+                    alert('onInvoke: ' + JSON.stringify(data));
+                },
+                onError: function(err) {
+                    alert('onError: ' + JSON.stringify(err));
+                }
+            });
+
+            dd.biz.navigation.setTitle({
+            title: 'runtime3',
+            onSuccess: function(data) {
+                log.i('set title 3');
+            },
+            onFail: function(err) {
+                log.e(JSON.stringify(err));
+            }
+        });
+
+                    dd.biz.navigation.setRight({
+        show: true,
+        control: false,
+        showIcon: true,
+        text: 'haha',            
+        onSuccess: function(data) {
+                log.i('set title 3');
+            },
+         onFail: function(err) {
+                log.e(JSON.stringify(err));
+            }
+
+
+});
+
+
+        });
+
+        function send() {
+            dd.support.call({
+                id: 'home_page', //必须。目标frame的id
+                params: {a:123}, //可选。传递给目标frame的参数
+                handler: 'fn', //可选。触发目标frame的函数名
+                onSuccess: function(res) {
+                    log.i('call success: ' + JSON.stringify(res));
+                },
+                onFail: function(err) {
+                    log.e('call fail: ' + JSON.stringify(res));
+                }
+            });
+
+            dd.support.drawer.close();
+        }
+
+    </script>
+</head>
+<body>
+    <h1>drawer test</h1>
+    <div><button onclick="send()">Send</button></div>
+    <div><button onclick="location.reload()">Refresh</button></div>
+    <div class="clear-float"/>
+    <div id="log"></div>
+</body>
+</html>

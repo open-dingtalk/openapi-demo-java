@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tab test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            /*background-color: burlywood;*/
+        }
+    </style>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/dingtalk.js"></script>
+    <script type="text/javascript">
+
+        var launched = false;
+
+        dd.ready(function() {
+
+            document.addEventListener('resume', function() {
+                log.i('resume');
+            });
+            document.addEventListener('pause', function() {
+                log.i('pause');
+            });
+
+            //dd.device.notification.showPreloader({text: 'loading tabs...'});
+
+            dd.ui.tab.init({
+                id: 'tab_group',
+                tabs: [
+                    {
+                        id: '1',
+                        title: '1',
+//                        url: 'tab1.html'
+                        url: 'http://www.dingtalk.com/index-b.html'
+                    }
+                    ,
+                    {
+                        id: '2',
+                        title: '2',
+                        url: 'tab2.html'
+                    },
+                    {
+                        id: '3',
+                        title: '3',
+                        url: 'tab3.html'
+                    }
+
+                ],
+                selected: '1',
+
+                indicator: {
+//                    backgroundColor: 'ff0000ff',
+//                    fontNormalColor: 'ffff0000',
+//                    chosenColor: 'ff00ff00'
+                },
+                onSuccess: function(data) {
+                    log.i('tab init: ' + JSON.stringify(data));
+
+                    if (!launched) {
+
+                        launched = true;
+                        dd.device.notification.hidePreloader({});
+                    }
+                },
+                onFail: function(err) {
+                    log.e('tab init err: ' + JSON.stringify(err));
+
+                    if (!launched) {
+                        launched = true;
+                        dd.device.notification.hidePreloader({});
+                    }
+                }
+            });
+        });
+
+        function start() {
+            dd.ui.tab.start({
+                autoRemove: false,
+                id: 'tab_group',
+                onSuccess: function(data) {
+                    log.i('tab start: ' + JSON.stringify(data));
+                },
+                onFail: function(err) {
+                    log.e('tab start err: ' + JSON.stringify(err));
+                }
+            });
+        }
+
+        function config() {
+            dd.ui.tab.config({
+                id: 'tab_group',
+                tabs: [
+                    {
+                        id: '2',
+                        title: 'title2',
+                        url: 'tab2.html'
+                    },
+                    {
+                        id: '3',
+                        title: 'title3',
+                        url: 'tab3.html'
+                    }
+
+                ],
+
+                onSuccess: function(data) {
+                    log.i('tab config: ' + JSON.stringify(data));
+                },
+                onFail: function(err) {
+                    log.e('tab config err: ' + JSON.stringify(err));
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>tab test</h1>
+    <div><button onclick="start()">Load</button></div>
+    <div><button onclick="config()">Config</button></div>
+    <div class="clear-float"/>
+    <div id="log"></div>
+</body>
+</html>

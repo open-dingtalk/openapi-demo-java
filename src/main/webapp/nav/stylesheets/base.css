@@ -1,0 +1,52 @@
+body {
+}
+
+a {
+    color: #00B7FF;
+}
+
+button {
+    width: 48%;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    float: left;
+}
+
+.clear-float {
+    clear: both;
+}
+
+#log {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.log-i {
+    color: green;
+}
+
+.log-e {
+    color: red;
+}
+
+.tag {
+    display: inline-block;
+    width: 170px;
+}
+
+.api {
+    display: inline-block;
+    width: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
+.log-row {
+    word-break: break-all;word-wrap: break-word;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>List</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	ul {
+		list-style: none
+	}
+	li{
+		height: 70px;
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		vertical-align: middle;
+	}
+	.icon img {
+		height: 70px;
+		width: 70px;
+	}
+	.icon {
+		display: inline-block;
+		vertical-align: middle;
+		/*border: 1px solid #00ff00;*/
+	}
+	.text {
+		margin-left: 10px;
+		width: calc(100% - 90px);
+		display: inline-block;
+		text-align: left;
+		line-height: 70px;
+		vertical-align: middle;
+	}
+    .avatar {
+        background-color: white;
+        height: 100px;
+        width: 100%;
+    }
+    .content {
+        background-color: #fee9cc;
+        margin-top: 100px;
+        width: 100%;
+        height: 1000px;
+    }
+	#pic {
+		padding-left: 25%;
+        padding-right: 25%;
+		width: 50%;
+        align-content: center;
+	}
+	</style>
+</head>
+<body>
+<div class="avatar"><img id="pic" src=""></div>
+<div class="content">sdasfsdfsd</div>
+
+<script type="text/javascript">
+	var url = location.href;
+	var query = decodeURIComponent(url.substr(url.lastIndexOf('?') + 1));
+	var pairs = query.split('&');
+	var kvs = {};
+	for (var i in pairs) {
+		var pair = pairs[i];
+		var kv = pair.split('=');
+		kvs[kv[0]] = kv[1];
+	}
+	var icon = kvs['icon'];
+	var text = kvs['text'];
+
+//	var row = document.createElement('li');
+//    row.innerHTML = '<div class="icon"><img src="' + icon + '.jpg"></div>' +
+//		'<div class="text">' + text + '</div>';
+//
+//	var header = document.querySelector('#header');
+//	header.appendChild(row);
+
+	var pic = document.querySelector('#pic');
+	pic.src = icon + '.jpg';
+</script>
+</body>
+</html>

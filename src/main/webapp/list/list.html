@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>List</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	ul {
+		list-style: none
+	}
+	li{
+		height: 70px;
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		vertical-align: middle;
+	}
+	.icon img {
+		height: 70px;
+		width: 70px;
+	}
+	.icon {
+		display: inline-block;
+		vertical-align: middle;
+		/*border: 1px solid #00ff00;*/
+	}
+	.text {
+		margin-left: 10px;
+		width: calc(100% - 90px);
+		display: inline-block;
+		text-align: left;
+		line-height: 70px;
+		vertical-align: middle;
+	}
+	</style>
+	
+</head>
+<body>
+<ul>
+<li>
+	<div class="icon"><img src="1.jpg"></div>
+	<div class="text">asdasdasdasdasdasdasdasdas</div>
+</li>
+<li>
+	<div class="icon"><img src="2.jpg"></div>
+	<div class="text">asdasd</div>
+</li>
+<li>
+	<div class="icon"><img src="3.jpg"></div>
+	<div class="text">asdasd</div>
+</li>
+<li>
+	<div class="icon"><img src="1.jpg"></div>
+	<div class="text">asdasdasdasdasdasdasdasdas</div>
+</li>
+<li>
+	<div class="icon"><img src="2.jpg"></div>
+	<div class="text">asdasd</div>
+</li>
+<li>
+	<div class="icon"><img src="3.jpg"></div>
+	<div class="text">asdasd</div>
+</li>
+<li>
+	<div class="icon"><img src="1.jpg"></div>
+	<div class="text">asdasd</div>
+</li>
+</ul>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+	setTimeout(function(){
+		// alert(window.innerWidth + ', ' + window.innerHeight);
+	}, 500);
+});
+
+	var items = document.querySelectorAll('li');
+	var i = 0;
+	for (;i < items.length; i++) {
+		items[i].addEventListener('click', function(item, index) {
+			return function(ev) {
+                var left = 0
+				var top = item.getBoundingClientRect().top;
+                var width = 90;
+				var height = item.offsetHeight;
+
+				// alert(top + ', ' + item.offsetHeight);
+				var icon = index % 3 + 1;
+				var text = 'This is an awesome detail ';
+				var url = 'detail.html?icon=' + icon + '&text=' + encodeURIComponent(text);
+//				window.panel.open(left, top, width, height, url);
+
+                //awesome demo
+//                window.panel.open(top, height, url);
+
+                var once = true;
+
+                //dingtalk
+//                url = 'http://www.baidu.com';
+                window.nuva.require('ui.nav').preload({
+                    pages: [{id: 'detail', url: url}],
+                    onSuccess: function(data) {
+                        if (once) {
+                            once = false;
+                            setTimeout(function() {
+                                window.nuva.require('ui.nav').go({
+                                    createIfNeeded: true,
+                                    id: 'detail',
+                                    url: url,
+                                    anim: 3,
+                                    transit: {
+                                        from: {
+                                            top: top,
+                                            left: 0,
+                                            height: height
+                                        },
+                                        to: {
+
+                                        }
+                                    },
+                                    onSuccess: function() {
+
+                                    },
+                                    onFail: function(err) {
+                                        alert(JSON.stringify(err));
+                                    }
+                                });
+                            }, 0);
+                        }
+                    },
+                    onFail: function(err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+			};
+		}(items[i], i));
+	}
+
+	// document.addEventListener('click', function(ev) {
+	// 	var y = Math.random() * 500;
+	// 	alert(y);
+	// 	var url = 'detail.html?icon=1&text=asdasdsdas';
+	// 	window.panel.open(y, 80, url);
+	// });
+
+	</script>
+</body>
+</html>

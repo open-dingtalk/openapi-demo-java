@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<html>
+<head>
+	<title>Nav 1</title>
+	<style type="text/css">
+	button {
+		width: 100%;
+		height: 100px;
+	}
+	</style>
+    <script type="text/javascript" src="javascripts/base.js"></script>
+	<script type="text/javascript">
+
+	document.addEventListener('runtimeready', function() {
+		alert('runtimeready');
+
+		document.addEventListener('pause', function() {
+			alert('pause');
+		});
+
+		document.addEventListener('resume', function() {
+			alert('resume');
+		});
+	});
+
+	function preload() {
+		window.nuva.require('ui.nav').preload({
+			pages: [
+				{
+					id: '2',
+					url: '2.html'
+				},
+				{
+					id: '3',
+					url: '3.html'
+				}
+			],
+			onSuccess: function(id) {
+				alert(id + ' page finished');
+			},
+			onFail: function(err) {
+				alert('preload err: ' + JSON.stringify(err));
+			}
+		});
+	}
+
+	//id是string类型
+	function go(id) {
+		window.nuva.require('ui.nav').go({
+			id: id,
+			onSuccess: function(id) {
+				alert('go to ' + id);
+			},
+			onFail: function(err) {
+				alert('go err: ' + JSON.stringify(err));
+			}
+		});
+	}
+
+	</script>
+</head>
+<body>
+	<h1>Nav 1</h1>
+	<h3>preload 2, 3</h3>
+	<div><button onclick="preload()">Preload</button></div>
+	<div><button onclick="go('2')">Go to '2'</button></div>
+	<div><button onclick="go('3')">Go to '3'</button></div>
+</body>
+</html>

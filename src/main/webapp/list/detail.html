@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>List</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	ul {
+		list-style: none
+	}
+	li{
+		height: 70px;
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		vertical-align: middle;
+	}
+	.icon img {
+		height: 70px;
+		width: 70px;
+	}
+	.icon {
+		display: inline-block;
+		vertical-align: middle;
+		/*border: 1px solid #00ff00;*/
+	}
+	.text {
+		margin-left: 10px;
+		/*width: calc(100% - 90px);*/
+		display: inline-block;
+		text-align: left;
+		line-height: 70px;
+		vertical-align: middle;
+	}
+	#pic {
+		padding: 10px;
+		width: 90%;
+	}
+	</style>
+</head>
+<body>
+<ul id="header">
+</ul>
+<img id="pic" src="">
+<script type="text/javascript">
+
+    var i = 0;
+    var timer = setInterval(function() {
+        i++;
+        console.log('width: ' + i * 50 + ',  ' + window.innerWidth);
+        if (window.innerWidth > 0) {
+            clearInterval(timer);
+        }
+    }, 50);
+
+	setTimeout(function() {
+        var url = location.href;
+        var query = decodeURIComponent(url.substr(url.lastIndexOf('?') + 1));
+        var pairs = query.split('&');
+        var kvs = {};
+        for (var i in pairs) {
+            var pair = pairs[i];
+            var kv = pair.split('=');
+            kvs[kv[0]] = kv[1];
+        }
+        var icon = kvs['icon'];
+        var text = kvs['text'];
+
+        var row = document.createElement('li');
+        row.innerHTML = '<div class="icon"><img src="' + icon + '.jpg"></div>' +
+                '<div class="text">' + text + '</div>';
+
+        var header = document.querySelector('#header');
+        header.appendChild(row);
+
+        var pic = document.querySelector('#pic');
+        pic.src = icon + '.jpg';
+    }, 0);
+
+//    setTimeout(function() {
+//        var top = pic.getBoundingClientRect().top;
+//        var left = pic.getBoundingClientRect().left;
+//        var height = pic.offsetHeight;
+//        var width = pic.offsetWidth;
+//        alert(top + ', ' + left + ', ' + height + ', ' + width);
+//    }, 500);
+
+</script>
+</body>
+</html>

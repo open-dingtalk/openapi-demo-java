@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tab 1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            /*background-color: burlywood;*/
+        }
+    </style>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/dingtalk.js"></script>
+    <script type="text/javascript">
+
+        dd.ready(function() {
+            document.addEventListener('resume', function() {
+                log.i('resume');
+            });
+            document.addEventListener('pause', function() {
+                log.i('pause');
+            });
+        });
+
+        setInterval(function() {
+            var w = document.body.clientWidth;
+            var h = document.body.clientHeight;
+            console.log(w + ', ' + h);
+        }, 50);
+    </script>
+</head>
+<body>
+    <h1>tab 1</h1>
+
+    <div class="clear-float"/>
+    <div id="log"></div>
+</body>
+</html>

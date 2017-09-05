@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>drawer test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <style>
+        body {
+            background-color: burlywood;
+        }
+    </style>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.7.3/scripts/dingtalk.js"></script>
+    <script type="text/javascript" src="js/support.js"></script>
+    <script type="text/javascript">
+
+        dd.ready(function() {
+        	dd.biz.navigation.setMenu({
+        		backgroundColor : "#ADD8E6",
+        		items : [
+        			{
+        				id:"1",//字符串
+        			// "iconId":"file",//字符串，图标命名
+        			  text:"帮助"
+        			}
+        			,
+        			{
+        				"id":"2",
+        			"iconId":"photo",
+        			  "text":"我们"
+        			}
+        			,
+        			{
+        				"id":"3",
+        			"iconId":"file",
+        			  "text":"你们"
+        			}
+        			,
+        			{
+        				"id":"4",
+        			"iconId":"time",
+        			  "text":"他们"
+        			}
+        		],
+        		onSuccess: function(data) {
+        			alert(JSON.stringify(data));
+
+        		},
+        		onFail: function(err) {
+        			alert(JSON.stringify(err));
+        		}
+        	});
+
+
+            dd.on('resume', function() {
+                log.i('index resume');
+            });
+
+            dd.support.nav.init({
+                id: 'home_page',
+                onInvoke: function(data) {
+                    alert('onInvoke: ' + JSON.stringify(data));
+                },
+                onError: function(err) {
+                    alert('onError: ' + JSON.stringify(err));
+                }
+            });
+
+            dd.support.drawer.init({
+                id: 'drawer',
+                url: 'drawer.html',
+                width: '300px',
+                alpha: 0.9,
+                pushContent: true,
+                onSuccess: function(data) {
+                    log.i('init drawer: ' + JSON.stringify(data));
+                    dd.support.drawer.enable();
+                },
+                onFail: function(err) {
+                    log.e('open drawer err: ' + JSON.stringify(err));
+                }
+            });
+        });
+
+        function openDrawer() {
+            dd.support.drawer.open({
+                onSuccess: function() {
+                    log.i('drawer open success');
+                },
+                onFail: function(err) {
+                    log.e('drawer open err: ' + JSON.stringify(err));
+                }
+            });
+        }
+
+        function fn(data, callback) {
+            alert('fn: ' + JSON.stringify(data));
+        }
+
+    </script>
+</head>
+<body>
+    <h1>drawer test</h1>
+    <div><button onclick="openDrawer()">Open</button></div>
+
+    <div class="clear-float"/>
+    <div id="log"></div>
+</body>
+</html>
