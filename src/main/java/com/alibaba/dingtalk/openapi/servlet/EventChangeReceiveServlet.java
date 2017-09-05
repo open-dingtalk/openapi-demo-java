@@ -16,7 +16,9 @@ import java.io.InputStreamReader;
 import java.util.Map;
 
 /**
- * 企业通讯录回调地址实现
+ * 企业通讯录回调地址实现<br/>
+ *
+ * 详细文档见:  https://open-doc.dingtalk.com/docs/doc.htm?treeId=385&articleId=104975&docType=1
  */
 public class EventChangeReceiveServlet extends HttpServlet {
 
@@ -45,13 +47,12 @@ public class EventChangeReceiveServlet extends HttpServlet {
         DingTalkEncryptor dingTalkEncryptor = null;
         String plainText = null;
         try {
-            //对于DingTalkEncryptor的第三个参数，ISV进行配置的时候传对应套件的SUITE_KEY，普通企业传Corpid
-            dingTalkEncryptor = new DingTalkEncryptor(Env.TOKEN, Env.ENCODING_AES_KEY, Env.SUITE_KEY.length() > 0 ? Env.SUITE_KEY : Env.CORP_ID);
+            // 根据用户注册的token和AES_KEY进行解密
+            dingTalkEncryptor = new DingTalkEncryptor(Env.TOKEN, Env.ENCODING_AES_KEY, Env.CORP_ID);
             plainText = dingTalkEncryptor.getDecryptMsg(msgSignature, timeStamp, nonce, encrypt);
         } catch (DingTalkEncryptException e) {
-            // TODO Auto-generated catch block
-            System.out.println(e.getMessage());
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         /**对从encrypt解密出来的明文进行处理**/

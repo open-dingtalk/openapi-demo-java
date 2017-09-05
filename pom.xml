@@ -7,9 +7,7 @@
     <artifactId>dingtalk-app-demo</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.8.RELEASE</spring.version>
     </properties>
     <dependencies>
@@ -17,42 +15,36 @@
             <groupId>com.laiwang.lippi</groupId>
             <artifactId>lippi.oapi.encryt</artifactId>
             <version>1.0.3-SNAPSHOT</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/lippi-oapi-encrpt.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.api</artifactId>
             <version>1.0.2</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.api-1.0.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.common-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.core-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>client-sdk.spring</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/client-sdk.spring-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.dingtalk.open</groupId>
             <artifactId>taobao-sdk-java</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/taobao-sdk-java-auto_1479188381469-20170724.jar
             </systemPath>
         </dependency>
@@ -60,10 +52,8 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
-            <scope>system</scope>
             <systemPath>${project.basedir}/lib/commons-io-2.4.jar</systemPath>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <version>4.3</version>
@@ -79,8 +69,6 @@
             <version>4.3</version>
             <artifactId>httpcore</artifactId>
         </dependency>
-
-
 
         <!-- spring依赖 -->
         <dependency>
@@ -139,19 +127,16 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-
         <dependency>
             <groupId>com.ning</groupId>
             <artifactId>async-http-client</artifactId>
@@ -162,8 +147,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.37</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -239,7 +222,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <!--<webappDirectory>src/main/webapp</webappDirectory>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -249,5 +231,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

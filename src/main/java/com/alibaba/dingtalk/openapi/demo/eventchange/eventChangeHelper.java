@@ -13,7 +13,9 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class eventChangeHelper {
 
-	//注册事件回调接口
+    /**
+     * 注册事件回调接口
+     */
 	public static String registerEventChange(String accessToken, List<String> callBackTag, String token, String aesKey, String url) throws OApiException{
 		String signUpUrl = Env.OAPI_HOST + "/call_back/register_call_back?" +
 				"access_token=" + accessToken;
