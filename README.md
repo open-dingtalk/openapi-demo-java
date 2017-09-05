@@ -1,5 +1,6 @@
-## 软件依赖
+### 软件依赖
 * java version "1.7"
+* maven3
 
 ## Getting Started
 
@@ -16,7 +17,7 @@
 [如何创建微应用？](http://ddtalk.github.io/dingTalkDoc/#step-2-创建微应用)
 
 
-### DEMO具体实现
+## DEMO具体实现
 
 #### 1. jsapi权限验证配置流程
 
