@@ -57,8 +57,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
-            <!--<scope>system</scope>-->
-            <!--<systemPath>${project.basedir}/lib/commons-io-2.4.jar</systemPath>-->
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

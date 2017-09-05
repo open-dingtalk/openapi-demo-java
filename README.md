@@ -14,7 +14,6 @@
 4. 部署工程，建议使用mvn -DskipTests=true jetty:run运行或者IDE中的maven插件运行
 5. OA后台创建微应用，并把工程的首页地址/index.jsp填到微应用**首页地址**中。
 [如何创建微应用？](http://ddtalk.github.io/dingTalkDoc/#step-2-创建微应用)
-<img src="https://img.alicdn.com/tps/TB1N490JFXXXXceXFXXXXXXXXXX-602-524.png" width="542" height="472">
 
 
 ### DEMO具体实现
