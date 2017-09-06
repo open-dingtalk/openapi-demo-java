@@ -58,7 +58,7 @@ var _config = <%= com.alibaba.dingtalk.openapi.demo.auth.AuthHelper.getConfig(re
 
 </script>
 <script type="text/javascript" src="javascripts/zepto.min.js"></script>
-<script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.7.3/scripts/dingtalk.js">
+<script type="text/javascript" src="http://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js">
 </script>
 <script type="text/javascript" src="javascripts/logger.js">
 </script>
