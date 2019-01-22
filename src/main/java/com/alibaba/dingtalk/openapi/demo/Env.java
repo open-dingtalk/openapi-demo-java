@@ -7,10 +7,20 @@ package com.alibaba.dingtalk.openapi.demo;
 public class Env {
 
     /**
-     * 企业应用接入秘钥相关
+     * 企业corpid
      */
     public static final String CORP_ID = "";
-    public static final String CORP_SECRET = "";
+
+    /**
+     * 应用的appkey
+     */
+    public static final String APP_KEY = "";
+
+    /**
+     * 应用的appsecret
+     */
+    public static final String APP_SECRET = "";
+
     public static final String SSO_Secret = "";
 
     /**

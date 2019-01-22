@@ -34,20 +34,20 @@ public class AuthHelper {
      */
     public static String getAccessToken() throws OApiException {
         long curTime = System.currentTimeMillis();
-        JSONObject accessTokenValue = (JSONObject) FileUtils.getValue("accesstoken", Env.CORP_ID);
+        JSONObject accessTokenValue = (JSONObject) FileUtils.getValue("accesstoken", Env.APP_KEY);
         String accToken = "";
         JSONObject jsontemp = new JSONObject();
         if (accessTokenValue == null || curTime - accessTokenValue.getLong("begin_time") >= cacheTime) {
             try {
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
                 CorpConnectionService corpConnectionService = serviceFactory.getOpenService(CorpConnectionService.class);
-                accToken = corpConnectionService.getCorpToken(Env.CORP_ID, Env.CORP_SECRET);
+                accToken = corpConnectionService.getCorpToken(Env.APP_KEY, Env.APP_SECRET);
                 // save accessToken
                 JSONObject jsonAccess = new JSONObject();
                 jsontemp.clear();
                 jsontemp.put("access_token", accToken);
                 jsontemp.put("begin_time", curTime);
-                jsonAccess.put(Env.CORP_ID, jsontemp);
+                jsonAccess.put(Env.APP_KEY, jsontemp);
                 //真实项目中最好保存到数据库中
                 FileUtils.write2File(jsonAccess, "accesstoken");
 
@@ -66,7 +66,7 @@ public class AuthHelper {
      * 正常的情况下，jsapi_ticket的有效期为7200秒，所以开发者需要在某个地方设计一个定时器，定期去更新jsapi_ticket
      */
     public static String getJsapiTicket(String accessToken) throws OApiException {
-        JSONObject jsTicketValue = (JSONObject) FileUtils.getValue("jsticket", Env.CORP_ID);
+        JSONObject jsTicketValue = (JSONObject) FileUtils.getValue("jsticket", Env.APP_KEY);
         long curTime = System.currentTimeMillis();
         String jsTicket = "";
 
@@ -85,7 +85,7 @@ public class AuthHelper {
                 jsontemp.clear();
                 jsontemp.put("ticket", jsTicket);
                 jsontemp.put("begin_time", curTime);
-                jsonTicket.put(Env.CORP_ID, jsontemp);
+                jsonTicket.put(Env.APP_KEY, jsontemp);
                 FileUtils.write2File(jsonTicket, "jsticket");
             } catch (Exception e) {
                 e.printStackTrace();
