@@ -52,7 +52,7 @@
             <artifactId>taobao-sdk-java</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/taobao-sdk-java-auto_1479188381469-20170724.jar</systemPath>
+            <systemPath>${project.basedir}/lib/taobao-sdk-java-auto_1479188381469-20190325.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>

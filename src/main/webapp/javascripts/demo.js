@@ -6,7 +6,7 @@
  * _config comes from server-side template. see views/index.jade
  */
 dd.config({
-			agentId : _config.agentid,
+			agentId : _config.agentId,
 			corpId : _config.corpId,
 			timeStamp : _config.timeStamp,
 			nonceStr : _config.nonceStr,

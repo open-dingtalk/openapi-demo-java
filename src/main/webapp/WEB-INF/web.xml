@@ -24,6 +24,16 @@
     <servlet-name>EventChangeReceiveServlet</servlet-name>
     <servlet-class>com.alibaba.dingtalk.openapi.servlet.EventChangeReceiveServlet</servlet-class>
   </servlet>
+  <servlet>
+    <display-name>WelcomeServlet</display-name>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>CallbackServlet</display-name>
+    <servlet-name>CallbackServlet</servlet-name>
+    <servlet-class>com.alibaba.dingtalk.openapi.servlet.CallbackServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>UserInfoServlet</servlet-name>
     <url-pattern>/userinfo</url-pattern>
@@ -35,5 +45,13 @@
   <servlet-mapping>
     <servlet-name>EventChangeReceiveServlet</servlet-name>
     <url-pattern>/eventreceive</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CallbackServlet</servlet-name>
+    <url-pattern>/callback</url-pattern>
   </servlet-mapping>
 </web-app>

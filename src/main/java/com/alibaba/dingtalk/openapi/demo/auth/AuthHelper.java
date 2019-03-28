@@ -4,6 +4,7 @@ import com.alibaba.dingtalk.openapi.demo.Env;
 import com.alibaba.dingtalk.openapi.demo.OApiException;
 import com.alibaba.dingtalk.openapi.demo.utils.FileUtils;
 import com.alibaba.dingtalk.openapi.demo.utils.HttpHelper;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.oapi.lib.aes.DingTalkJsApiSingnature;
 import com.dingtalk.open.client.ServiceFactory;
@@ -13,16 +14,20 @@ import com.dingtalk.open.client.api.service.corp.JsapiService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * AccessToken和jsticket的获取封装
  */
 public class AuthHelper {
 
-    // 调整到1小时50分钟
+    /**
+     * 调整到1小时50分钟
+     */
     public static final long cacheTime = 1000 * 60 * 55 * 2;
 
-    /*
+    /**
      * 在此方法中，为了避免频繁获取access_token，
      * 在距离上一次获取access_token时间在两个小时之内的情况，
      * 将直接从持久化存储中读取access_token
@@ -57,7 +62,6 @@ public class AuthHelper {
         } else {
             return accessTokenValue.getString("access_token");
         }
-
         return accToken;
     }
 
@@ -96,7 +100,6 @@ public class AuthHelper {
         }
     }
 
-
     public static String sign(String ticket, String nonceStr, long timeStamp, String url) throws OApiException {
         try {
             return DingTalkJsApiSingnature.getJsApiSingnature(url, nonceStr, timeStamp, ticket);
@@ -104,7 +107,6 @@ public class AuthHelper {
             throw new OApiException(0, ex.getMessage());
         }
     }
-
 
     /**
      * 计算当前请求的jsapi的签名数据<br/>
@@ -126,31 +128,42 @@ public class AuthHelper {
         } else {
             url = urlString;
         }
+        /**
+         * 确认url与配置的应用首页地址一致
+         */
+        System.out.println(url);
 
+        /**
+         * 随机字符串
+         */
         String nonceStr = "abcdefg";
         long timeStamp = System.currentTimeMillis() / 1000;
         String signedUrl = url;
         String accessToken = null;
         String ticket = null;
         String signature = null;
-        String agentid = null;
 
         try {
             accessToken = AuthHelper.getAccessToken();
 
             ticket = AuthHelper.getJsapiTicket(accessToken);
             signature = AuthHelper.sign(ticket, nonceStr, timeStamp, signedUrl);
-            agentid = "";
 
         } catch (OApiException e) {
             e.printStackTrace();
         }
-        String configValue = "{jsticket:'" + ticket + "',signature:'" + signature + "',nonceStr:'" + nonceStr + "',timeStamp:'"
-                + timeStamp + "',corpId:'" + Env.CORP_ID + "',agentid:'" + agentid + "'}";
-        System.out.println(configValue);
-        return configValue;
-    }
 
+        Map<String, Object> configValue = new HashMap<>();
+        configValue.put("jsticket", ticket);
+        configValue.put("signature", signature);
+        configValue.put("nonceStr", nonceStr);
+        configValue.put("timeStamp", timeStamp);
+        configValue.put("corpId", Env.CORP_ID);
+        configValue.put("agentId", Env.AGENT_ID);
+
+        String config = JSON.toJSONString(configValue);
+        return config;
+    }
 
     public static String getSsoToken() throws OApiException {
         String url = "https://oapi.dingtalk.com/sso/gettoken?corpid=" + Env.CORP_ID + "&corpsecret=" + Env.SSO_Secret;
@@ -164,5 +177,4 @@ public class AuthHelper {
         return ssoToken;
 
     }
-
 }
