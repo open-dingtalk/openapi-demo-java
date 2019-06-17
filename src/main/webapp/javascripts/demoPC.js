@@ -1,5 +1,5 @@
 DingTalkPC.config({
-    agentId : _config.agentid,
+    agentId : _config.agentId,
     corpId : _config.corpId,
     timeStamp : _config.timeStamp,
     nonceStr : _config.nonceStr,
