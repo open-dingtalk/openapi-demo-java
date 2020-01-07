@@ -24,7 +24,7 @@
 
 请查看[文档](http://ddtalk.github.io/dingTalkDoc/#页面引入js文件)
 - 前端文件:WebContent/index.jsp，WebContent/javascripts/demo.js
-- 后端文件:[链接](https://github.com/open-dingtalk/openapi-demo-java/blob/master/src/com/alibaba/dingtalk/openapi/demo/auth/AuthHelper.java)
+- 后端文件
 
 2.免登流程
 
