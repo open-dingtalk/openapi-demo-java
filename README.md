@@ -26,7 +26,7 @@
 
 #### 2.免登流程
 请查看[文档](https://ding-doc.dingtalk.com/doc#/dev/ep7bpq)
-- 前端文件:WebContent/javascripts/demo.js和
+- 前端文件:WebContent/javascripts/demo.js
 - 后端文件:[链接](https://github.com/open-dingtalk/openapi-demo-java/blob/master/src/main/java/com/alibaba/dingtalk/openapi/servlet/UserInfoServlet.java)
 
 #### 3.企业内部应用-服务端API-通讯录管理-部门管理
