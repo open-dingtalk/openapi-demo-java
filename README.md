@@ -6,7 +6,7 @@
 
 1. 将工程clone到本地：`git clone https://github.com/open-dingtalk/openapi-demo-java.git`
 2. 使用IDE导入工程，比如eclipse点击`File->import`(推荐使用maven导入), IDEA点击`File->New->Project from Existing Sources...`, 文件编码都是UTF-8
-3. 打开工程的Env.java文件，填入企业的CORP_ID，APP_KEY，APP_SECRET（参考文档：https://ding-doc.dingtalk.com/doc#/faquestions/dcubhu）
+3. 打开工程的Env.java文件，填入企业的CORP_ID，APP_KEY，APP_SECRET。参数获取请参考[名词解释](https://ding-doc.dingtalk.com/doc#/faquestions/dcubhu)
 ```
     public static final String CORP_ID = "your CORP_ID";
     public static final String APP_KEY = "your APP_KEY";
@@ -27,8 +27,7 @@
 #### 2.免登流程
 请查看[文档](https://ding-doc.dingtalk.com/doc#/dev/ep7bpq)
 - 前端文件:WebContent/javascripts/demo.js和
-- 后端文件:[链接](https://github.com/open-dingtalk/openapi-demo-java/blob/master/src/com/alibaba/dingtalk/openapi/servlet/UserInfoServlet.java)
-
+- 后端文件:[链接](https://github.com/open-dingtalk/openapi-demo-java/blob/master/src/main/java/com/alibaba/dingtalk/openapi/servlet/UserInfoServlet.java)
 
 #### 3.企业内部应用-服务端API-通讯录管理-部门管理
 请查看[文档](https://ding-doc.dingtalk.com/doc#/serverapi2/dubakq)
