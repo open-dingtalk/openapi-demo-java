@@ -61,7 +61,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
-            <version>4.3</version>
+            <version>4.5.13</version>
             <artifactId>httpclient</artifactId>
         </dependency>
         <dependency>
